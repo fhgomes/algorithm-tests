@@ -2,7 +2,6 @@ package com.fernando;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,11 +9,11 @@ import java.util.List;
 import static java.util.Objects.isNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PackNumbersTest {
+@SuppressWarnings("squid:ForLoopCounterChangedCheck")
+ class PackNumbersTest {
     // Complete the packNumbers function below.
     static List<String> packNumbers(List<Integer> originArray) {
         List<String> packNumbers = new ArrayList<>();
-        originArray.toArray();
         if (isNull(originArray) || originArray.isEmpty()) {
             return packNumbers;
         }

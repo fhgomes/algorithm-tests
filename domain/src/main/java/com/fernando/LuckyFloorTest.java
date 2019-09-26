@@ -2,11 +2,8 @@ package com.fernando;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,11 +52,8 @@ class LuckyFloorTest {
     }
 
     static boolean isNumberWithLuck(int number) {
-        String stringNumber = Integer.valueOf(number).toString();
-        if(stringNumber.contains("4") || stringNumber.contains("13")) {
-            return false;
-        }
-        return true;
+        String stringNumber = Integer.toString(number);
+        return !stringNumber.contains("4") && !stringNumber.contains("13");
     }
 
     @Test
