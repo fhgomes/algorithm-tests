@@ -70,6 +70,5 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("7:2", packed.get(1));
         assertEquals("4", packed.get(2));
         assertEquals("3", packed.get(3));
-        assertEquals(Arrays.asList("5:3, 7:2, 4, 3"), packNumbers(Arrays.asList(5,5,5,7,7,4,3)));
     }
 }
