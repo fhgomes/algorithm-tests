@@ -51,34 +51,4 @@ class LuckyFloor {
         String stringNumber = Integer.toString(number);
         return !stringNumber.contains("4") && !stringNumber.contains("13");
     }
-//
-//    @Test
-//    public void teste1() {
-//        assertEquals(1, getLuckyFloorNumber(1));
-//    }
-//
-//    @Test
-//    public void teste4() {
-//        assertEquals(5, getLuckyFloorNumber(4));
-//    }
-//
-//    @Test
-//    public void teste5() {
-//        assertEquals(6, getLuckyFloorNumber(5));
-//    }
-//
-//    @Test
-//    public void teste6() {
-//        assertEquals(7, getLuckyFloorNumber(6));
-//    }
-//
-//    @Test
-//    public void teste11() {
-//        assertEquals(12, getLuckyFloorNumber(11));
-//    }
-//
-//    @Test
-//    public void teste12() {
-//        assertEquals(15, getLuckyFloorNumber(12));
-//    }
 }
