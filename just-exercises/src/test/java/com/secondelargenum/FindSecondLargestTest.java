@@ -1,8 +1,9 @@
-package com.fernando;
+package com.secondelargenum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import com.secondlargenum.FindSecondLargest;
 import org.junit.jupiter.api.Test;
 
 /*

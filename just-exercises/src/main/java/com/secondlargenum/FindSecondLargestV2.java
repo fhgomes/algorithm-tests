@@ -1,4 +1,4 @@
-package com.fernando;
+package com.secondlargenum;
 
 public class FindSecondLargestV2 {
     public Integer find(Integer... numbers) {

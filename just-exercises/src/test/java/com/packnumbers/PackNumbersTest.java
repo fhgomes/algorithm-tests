@@ -1,4 +1,4 @@
-package com.fernando;
+package com.packnumbers;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,7 +1,8 @@
-package com.fernando;
+package com.luckyfloor;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.luckyfloor.LuckyFloor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
