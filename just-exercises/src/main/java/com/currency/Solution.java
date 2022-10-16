@@ -10,7 +10,7 @@ import java.util.Optional;
 
 /* We are a currency exchange that maintains the current exchange rates between currencies.
 
-    A user can come to us with some amount in one currency (RS) and request the equivalent amount in a different currency ($).
+    A user can come to us with some amount in one currency and request the equivalent amount in a different currency.
     Given a list of exchange rates between currencies, write a function that calculates currency rate between any 2 currencies.
 
     // Example 1 -
