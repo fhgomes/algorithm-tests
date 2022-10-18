@@ -4,10 +4,9 @@ import static java.util.Objects.isNull;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 /*
     It should be possible to register an instance, identified by an address
@@ -25,10 +24,10 @@ import java.util.Set;
 public class SimpleServiceRegistry {
     public static final int MAX_ADDRESS_BY_INSTANCE = 10;
 
-    private final Map<String, Set<URI>> nameAddressRegistry;
+    private final Map<String, List<URI>> nameAddressRegistry;
     private final Random retrieveAccessor;
 
-    public SimpleServiceRegistry(Map<String, Set<URI>> storage) {
+    public SimpleServiceRegistry(Map<String, List<URI>> storage) {
         validateStorage(storage);
         this.nameAddressRegistry = storage;
         this.retrieveAccessor = new Random();
@@ -43,23 +42,25 @@ public class SimpleServiceRegistry {
 
     private void doRegister(String serviceInstanceName, URI address) {
         if (isNull(nameAddressRegistry.get(serviceInstanceName))) {
-            Set<URI> addresses = new HashSet<>();
+            List<URI> addresses = new ArrayList<>();
             addresses.add(address);
             nameAddressRegistry.put(serviceInstanceName, addresses);
         } else {
-            Set<URI> instanceValues = nameAddressRegistry.get(serviceInstanceName);
+            List<URI> instanceValues = nameAddressRegistry.get(serviceInstanceName);
             if (instanceValues.size() == MAX_ADDRESS_BY_INSTANCE) {
                 throw new RegistryFullException(serviceInstanceName);
             }
             if (instanceValues.contains(address)) {
                 throw new AddressAlreadyRegisteredException(serviceInstanceName, address.toString());
             }
+            instanceValues.add(address);
+
         }
     }
 
     public URI retrieveAddressOfInstance(String serviceInstanceName) {
         validateServiceName(serviceInstanceName);
-        Set<URI> maybeRegisteredAddresses = nameAddressRegistry.get(serviceInstanceName);
+        List<URI> maybeRegisteredAddresses = nameAddressRegistry.get(serviceInstanceName);
 
         if (isNull(maybeRegisteredAddresses)) {
             throw new InstanceNotFoundException(serviceInstanceName);
@@ -67,7 +68,7 @@ public class SimpleServiceRegistry {
 
         int randomAddress = retrieveAccessor.nextInt(maybeRegisteredAddresses.size());
 
-        return new ArrayList<>(maybeRegisteredAddresses).get(randomAddress);
+        return maybeRegisteredAddresses.get(randomAddress);
     }
 
     private static void validateAddress(URI address) {
@@ -76,7 +77,7 @@ public class SimpleServiceRegistry {
         }
     }
 
-    private static void validateStorage(Map<String, Set<URI>> storage) {
+    private static void validateStorage(Map<String, List<URI>> storage) {
         if (isNull(storage)) {
             throw new StoreInvalidException();
         }
