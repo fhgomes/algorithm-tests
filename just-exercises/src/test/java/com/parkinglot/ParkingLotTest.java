@@ -1,5 +1,9 @@
 package com.parkinglot;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class ParkingLotTest {
@@ -19,14 +23,14 @@ class ParkingLotTest {
     void testFirstCase() {
         ParkingLot target = new  ParkingLot(3);
 
-        target.enterCar();
-        target.enterMoto();
-        target.enterCar();
-        target.enterMoto();
+        assertTrue(target.enterCar());
+        assertTrue(target.enterMoto());
+        assertTrue(target.enterCar());
+        assertTrue(target.enterMoto());
 
         target.exitCar(1);
-        target.enterMoto();
-        target.printCountExits();
+        assertTrue(target.enterMoto());
+        assertEquals(1, target.printCountExits());
     }
 
     /*
@@ -44,12 +48,13 @@ class ParkingLotTest {
     void testSecondCase() {
         ParkingLot target = new  ParkingLot(2);
 
-        target.enterMoto();
-        target.enterMoto();
-        target.enterMoto();
+        assertTrue(target.enterMoto());
+        assertTrue(target.enterMoto());
+        assertTrue(target.enterMoto());
+
         target.exitMoto(2);
 
-        target.enterCar();
-        target.printCountExits();
+        assertFalse(target.enterCar());
+        assertEquals(1,target.printCountExits());
     }
 }

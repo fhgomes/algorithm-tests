@@ -74,8 +74,9 @@ public class ParkingLot {
         return false;
     }
 
-    public void printCountExits() {
+    public int printCountExits() {
         System.out.println("Output: "+ numberOfExits);
+        return numberOfExits;
     }
 
     public void exitCar(int index) {
