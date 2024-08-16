@@ -75,41 +75,38 @@ public class WordSearcherInMatrix {
     System.out.println(format("I found the first letter [%s] at position [%d, %d]"
         , firstChar, firstWordCharLineIndex, firstWordCharColumnIndex));
 
-    //BigO (1 x M) == BigO (M)
+    //From here all direction methods will have the same complexity
+    //BigO (k) == where K is the size of the words, because its doing a limited access of the index of the matrix
+
     boolean isWordFound = findWordUsingRightSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
       return isWordFound;
     }
 
-    //BigO (N x M)
     System.out.println("\n == Try to find using Right Down sequence ==");
     isWordFound = findWordUsingRightDownSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
       return isWordFound;
     }
 
-    //BigO (N x 1)
     System.out.println("\n == Try to find using Down sequence ==");
     isWordFound = findWordUsingDownSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
       return isWordFound;
     }
 
-    //BigO (1 x M) == BigO (N)
     System.out.println("\n == Try to find using Left sequence ==");
     isWordFound = findWordUsingLeftSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
       return isWordFound;
     }
 
-    //BigO (N x M)
     System.out.println("\n == Try to find using Left Up sequence ==");
     isWordFound = findWordUsingLeftUpSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
       return isWordFound;
     }
 
-    //BigO (N x 1) == BigO (N)
     System.out.println("\n == Try to find using UP sequence ==");
     isWordFound = findWordUsingUpSeq(word, firstCharIndex, matrix, firstWordCharLineIndex, firstWordCharColumnIndex);
     if (isWordFound) {
